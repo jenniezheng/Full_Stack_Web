@@ -59,3 +59,16 @@ div.container-fluid{
 .center{
 	text-align:center;
 }
+
+h1.success{
+	color:#a3f986;
+}
+
+h1.error{
+	color:#f2988e;
+}
+
+.message{
+	margin-bottom:20px;
+	font-style:italic;
+}

@@ -23,7 +23,9 @@ app.use(flash());
 // Mongoose
 //==============
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost/animal_camp", {useMongoClient: true});
+
+//mongoose.connect("mongodb://localhost/animal_camp", {useMongoClient: true});
+mongoose.connect("mongodb://jenniezheng321:123456AZ@ds129153.mlab.com:29153/malcamp", {useMongoClient: true});
 var db = mongoose.connection;
 
 //==============
@@ -58,7 +60,8 @@ db.once('open', function callback () {
 	app.use("/", index_routes);
 	app.use("/animals",animal_routes);
 	app.use("/animals/:id/comments",comment_routes);
-	app.listen(port_num,function(){
-		console.log("Animal Camp Server has started on port",port_num);
+	//process.env.PORT
+	app.listen(port_num, process.env.IP,function(){
+		console.log("Animal Camp Server has started",port_num);
 	});
 });
