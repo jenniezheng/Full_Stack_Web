@@ -6,18 +6,17 @@
 			<p class="lead"> <h1> MalCamp </h1> </p>
 			<div class="list-group">
 				<li class="list-group-item">EDITING</li>
-				<li class="list-group-item">Info 2</li>
-				<li class="list-group-item">Info 3</li>
-				<li class="list-group-item">Info 4</li>
-				<li class="list-group-item">Info 5</li>
+				<li class="list-group-item">Price</li>
+				<li class="list-group-item">Days Since Comment</li>
+				<li class="list-group-item">Map</li>
 			</div>
 		</div>
 		<div class="col-md-9">
 			<div class="thumbnail">
 				<img class="image-responsive" src="<%= animal.image %>">
 				<div class="captain caption-full">
-					<h4 class="pull-right">$20.00/day (EDITING)</h4>
-					<h4><a><%=animal.name%></a></h4>
+					<h4 class="pull-right">$20.00/day </h4>
+					<h4><%=animal.name%></h4>
 					<p><%= animal.description %></p>
 					<p><em>Submitted by <%= animal.author.username %></em></p>
 					<% if (animal.author && user && animal.author.id == user.id) {%>
@@ -39,7 +38,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<strong><%= comment.author.username %></strong>
-						<span class="pull-right">5 days ago (EDITING)</span>
+						<span class="pull-right">5 days ago</span>
 						<p><%= comment.text %></p>
 						<% if (comment.author && user && comment.author.id == user.id) {%>
 						<a class="btn btn-xs pink" href="/animals/<%= animal._id %>/comments/<%=comment._id%>/edit">Edit</a>
