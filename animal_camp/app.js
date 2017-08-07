@@ -61,6 +61,6 @@ db.once('open', function callback () {
 	app.use("/animals",animal_routes);
 	app.use("/animals/:id/comments",comment_routes);
 	app.listen(process.env.PORT, process.env.IP,function(){
-		console.log("Animal Camp Server has started",process.env.PORT);
+		console.log("Animal Camp Server has started");
 	});
 });
