@@ -14,6 +14,7 @@ middlewareObject.hasCommentOwnership=function(req, res, next){
 		res.redirect("back");
 	}
 	else{
+		if(req.user.username=="Admin")  return next();
 		Comment.findById(req.params.comment_id,function(error, comment){
 			if(error){
 				console.log("Error finding comment by ID!",error);
@@ -36,6 +37,7 @@ middlewareObject.hasAnimalOwnership=function(req, res, next){
 		res.redirect("back");
 	}
 	else{
+		if(req.user.username=="Admin")  return next();
 		Animal.findById(req.params.id,function(error, animal){
 			if(error){
 				console.log("Error finding animal by ID!",error);

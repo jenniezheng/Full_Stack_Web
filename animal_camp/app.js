@@ -60,7 +60,12 @@ db.once('open', function callback () {
 	app.use("/", index_routes);
 	app.use("/animals",animal_routes);
 	app.use("/animals/:id/comments",comment_routes);
+	if(process.env.PORT)
 	app.listen(process.env.PORT, process.env.IP,function(){
 		console.log("Animal Camp Server has started");
+	});
+	else app.listen(port_num, process.env.IP,function(){
+		console.log("Animal Camp Server has started on port ",port_num);
+		console.log("View at http://localhost:"+port_num+"/");
 	});
 });

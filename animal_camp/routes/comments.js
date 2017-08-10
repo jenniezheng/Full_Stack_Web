@@ -76,7 +76,6 @@ router.put("/:comment_id",middleware_obj.hasCommentOwnership,function(req,res){
 			req.flash("error","Something went wrong.");
 			res.redirect("back");
 		}
-
 		req.flash("success","Your comment has been edited.");
 		res.redirect("/animals/"+req.params.id );
 	});
