@@ -11,6 +11,7 @@ passport=require("passport"),
 LocalStrategy = require("passport-local"),
 method_override=require("method-override"),
 passportLocalMongoose = require("passport-local-mongoose");
+password=require("./password")
 port_num=3000;
 
 
@@ -25,7 +26,7 @@ app.use(flash());
 mongoose.Promise = global.Promise;
 
 //mongoose.connect("mongodb://localhost/animal_camp", {useMongoClient: true});
-mongoose.connect("mongodb://jenniezheng321:123456AZ@ds129153.mlab.com:29153/malcamp", {useMongoClient: true});
+mongoose.connect("mongodb://jenniezheng321:"+password+"@ds129153.mlab.com:29153/malcamp", {useMongoClient: true});
 var db = mongoose.connection;
 
 //==============

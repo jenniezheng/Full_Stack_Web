@@ -3,21 +3,14 @@ const body_parser=require("body-parser");
 	  express=require("express");
 	  express_sanitizer=require("express-sanitizer");
 	  method_override=require("method-override");
+	  password=require("./password")
 	  app=express();
+	  port_num=3000;
 
-uristring =
-    process.env.MONGOLAB_URI ||
-    process.env.MONGOHQ_URL ||
-    'mongodb://localhost/HelloMongoose';
-port_num = process.env.PORT || 5000;
+mongoose.Promise = global.Promise;
+mongoose.connect("mongodb://jenniezheng321:"+password+"@ds113580.mlab.com:13580/blog", {useMongoClient: true});
+var db = mongoose.connection;
 
-mongoose.connect(uristring {
-      if (err) {
-      console.log ('ERROR connecting to: ' + uristring + '. ' + err);
-      } else {
-      console.log ('Succeeded connected to: ' + uristring);
-      }
-});
 
 var rant_schema=mongoose.Schema({
 	title:String,
