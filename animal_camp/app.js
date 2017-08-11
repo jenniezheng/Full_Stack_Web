@@ -10,8 +10,8 @@ User = require("./models/user"),
 passport=require("passport"),
 LocalStrategy = require("passport-local"),
 method_override=require("method-override"),
-passportLocalMongoose = require("passport-local-mongoose");
-password=require("./password")
+passportLocalMongoose = require("passport-local-mongoose"),
+password=require("./password"),
 port_num=3000;
 
 
@@ -61,12 +61,14 @@ db.once('open', function callback () {
 	app.use("/", index_routes);
 	app.use("/animals",animal_routes);
 	app.use("/animals/:id/comments",comment_routes);
-	if(process.env.PORT)
+	
+});
+
+if(process.env.PORT)
 	app.listen(process.env.PORT, process.env.IP,function(){
 		console.log("Animal Camp Server has started");
 	});
-	else app.listen(port_num, process.env.IP,function(){
-		console.log("Animal Camp Server has started on port ",port_num);
-		console.log("View at http://localhost:"+port_num+"/");
-	});
+else app.listen(port_num, function(){
+	console.log("Animal Camp Server has started on port ",port_num);
+	console.log("View at http://localhost:"+port_num+"/");
 });
