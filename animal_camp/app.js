@@ -10,9 +10,7 @@ User = require("./models/user"),
 passport=require("passport"),
 LocalStrategy = require("passport-local"),
 method_override=require("method-override"),
-passportLocalMongoose = require("passport-local-mongoose"),
-password=require("./password"),
-port_num=3000;
+passportLocalMongoose = require("passport-local-mongoose");
 
 
 app.use(method_override("_method"));
@@ -24,10 +22,7 @@ app.use(flash());
 // Mongoose
 //==============
 mongoose.Promise = global.Promise;
-
-//mongoose.connect("mongodb://localhost/animal_camp", {useMongoClient: true});
-mongoose.connect("mongodb://jenniezheng321:"+password+"@ds129153.mlab.com:29153/malcamp", {useMongoClient: true});
-var db = mongoose.connection;
+mongoose.connect(process.env.ANIMAL_DB_URL, {useMongoClient: true});
 
 //==============
 // Passports
@@ -54,21 +49,16 @@ passport.deserializeUser(User.deserializeUser());
 //==============
 // Routes
 //==============
-db.once('open', function callback () {
-	const comment_routes=require("./routes/comments"),
-	animal_routes=require("./routes/animals"),
-	index_routes=require("./routes/index");
-	app.use("/", index_routes);
-	app.use("/animals",animal_routes);
-	app.use("/animals/:id/comments",comment_routes);
+const comment_routes=require("./routes/comments"),
+animal_routes=require("./routes/animals"),
+index_routes=require("./routes/index");
+app.use("/", index_routes);
+app.use("/animals",animal_routes);
+app.use("/animals/:id/comments",comment_routes);
 	
-});
 
-if(process.env.PORT)
-	app.listen(process.env.PORT, process.env.IP,function(){
-		console.log("Animal Camp Server has started");
-	});
-else app.listen(port_num, function(){
-	console.log("Animal Camp Server has started on port ",port_num);
-	console.log("View at http://localhost:"+port_num+"/");
+
+app.listen(process.env.PORT, process.env.IP,function(){
+	console.log("Animal Camp Server has started on port", process.env.PORT);
+	console.log("If on localhost, view at http://localhost:"+process.env.PORT);
 });

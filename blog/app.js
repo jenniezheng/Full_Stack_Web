@@ -3,12 +3,10 @@ mongoose=require("mongoose"),
 express=require("express"),
 express_sanitizer=require("express-sanitizer"),
 method_override=require("method-override"),
-password=require("./password"),
-app=express(),
-port_num=3000;
+app=express();
 
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://jenniezheng321:"+password+"@ds113580.mlab.com:13580/blog", {useMongoClient: true});
+mongoose.connect(process.env.BLOG_DB_URL, {useMongoClient: true});
 
 var rant_schema=mongoose.Schema({
 	title:String,
@@ -99,11 +97,8 @@ app.delete("/rants/:id",function(req,res){
 });
 
 
-if(process.env.PORT)
-	app.listen(process.env.PORT, process.env.IP,function(){
-		console.log("Rant Server has started");
-	});
-else app.listen(port_num, function(){
-	console.log("Rant Server has started on port ",port_num);
-	console.log("View at http://localhost:"+port_num+"/");
+
+app.listen(process.env.PORT, process.env.IP,function(){
+	console.log("Rant Server has started on port", process.env.PORT);
+	console.log("If on localhost, view at http://localhost:"+process.env.PORT);
 });
