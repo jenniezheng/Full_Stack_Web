@@ -1,7 +1,29 @@
-<% include partials/header %>
-<a href="/animals" class="center"><button class="btn"><img src="http://wallpapercave.com/wp/E1GrKPY.jpg" style:"width:100%;"></button></a>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AnyWorld</title>
+
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/main.css">
+</head>
+<body class="landing">
 
 
+	<div class="message container">
+		<%if (error_message&&error_message.length>0){%>
+		<h1 class="error" ><%= error_message %></h1>
+		<% } %>
+		<%if (success_message&&success_message.length>0){%>
+		<h1 class="success"><%= success_message %></h1>
+		<% } %>
+	</div>
 
+	<div class="container">
+ 	 <div style="text-align:center; background-color:transparent !important;" class="jumbotron">
+ 	 	 <h1>AnyWorld</h1> 
+ 	 	 <br>
+	    <p><a class="inline btn btn-info btn-lg pink" href="/animals">Enter</a></p>
+ 	 </div>
+ 	 </div>
 
 <% include partials/footer %>
