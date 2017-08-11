@@ -2,3 +2,4 @@ node_modules
 ColorGuessing
 Makefile
 password.js
+.gitignore
