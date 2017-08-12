@@ -45,7 +45,6 @@ function addListeners(){
 				message_display.textContent="Good job.";
 				replayer.textContent="Play Again";
 				done=true;
-				document.querySelector("div.top").style.backgroundColor=pickedColor;
 			}
 			else {
 				this.classList.add("wrong");
