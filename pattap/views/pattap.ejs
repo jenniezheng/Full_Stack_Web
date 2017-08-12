@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pattap</title>
+	<link rel = "stylesheet" type = "text/css" href = "stylesheets/style.css" />
+	<!-- Load the Howler.js library -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.4/howler.js"></script>
+
+	<!-- Load the Paper.js library -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/paper.js/0.11.4/paper-full.js"></script>
+	
+	
+
+	<script type="text/paperscript" canvas="myCanvas">
+	var sounds=['clay.mp3', 'bubbles.mp3', 'flash-3.mp3', 'suspension.mp3', 'piston-3.mp3', 'moon.mp3', 'glimmer.mp3', 'flash-2.mp3', 'wipe.mp3', 'piston-2.mp3', 'ufo.mp3', 'prism-1.mp3', 'splits.mp3', 'veil.mp3', 'zig-zag.mp3', 'piston-1.mp3', 'prism-3.mp3', 'strike.mp3', 'squiggle.mp3', 'corona.mp3', 'quick.py', 'prism-2.mp3', 'confetti.mp3', 'timer.mp3', 'flash-1.mp3', 'dotted-spiral.mp3', 'pinwheel.mp3'];
+
+	
+	var objects=[];
+
+	function randomX(){
+		return Math.random()*view.size.width;
+	}
+
+	function randomY(){
+		return Math.random()*view.size.height;
+	}
+
+	function drawCircle(code){
+		var myCircle_path = new Path.Circle(new Point(randomX(),randomY()), 50);
+		myCircle_path.fillColor = 'red';
+		return myCircle_path;
+	}
+
+	function Circle(){
+		this.init=function(){
+			new_circle_path=drawCircle();
+			this.path=new_circle_path;
+		}
+		this.update=function(){
+			this.path.scale(.98);
+			this.path.fillColor.hue+=3;
+		}
+		this.die=function(){
+			return this.path.area < 0.1 ;
+		}
+	}
+
+	function drawSquare(){
+		var path = new Path.Rectangle({	point: [randomX(), randomY()], size: [100, 200],});
+		path.fillColor = 'blue';
+		return path;
+	}
+
+	function Square(){
+		this.init=function(){
+			path=drawSquare();
+			this.path=path;
+		}
+		this.update=function(){
+			this.path.rotate(3);
+			this.path.opacity-=.01;
+		}
+		this.die=function(){
+			return this.path.opacity<.01;
+		}
+	}
+
+	
+
+	function playSound(code){
+		var selectedSound=sounds[code];
+		var sound = new Howl({
+		 src: ['music/'+selectedSound]
+		});
+		sound.play();
+	}
+
+	function onKeyDown(event) {
+		if('z'>= event.key && event.key>='a'){
+			<!--Code from 0 to 25 -->
+			var code=event.key.charCodeAt()-97;
+			playSound(code);
+			var new_object; 
+			if(code>14){
+				new_object=new Circle();
+			}
+			else  {
+				new_object=new Square();
+			}
+			new_object.init();
+			objects.push(new_object);
+		}
+	}
+
+	function onFrame(){
+		for(var i=0; i<objects.length; i++){
+			my_object=objects[i];
+			my_object.update();
+			if(my_object.die()){
+				my_object.path.remove();
+				objects.splice(i, 1);
+			}
+		}
+	}
+	
+	</script>
+
+<body>
+	<canvas id="myCanvas"></canvas>
+</body>
+	<!-- Load the jQuery.js library -->
+	<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+</html>
+
