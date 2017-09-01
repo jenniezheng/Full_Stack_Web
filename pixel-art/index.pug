@@ -1,0 +1,50 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    title PixelArt
+    link(rel='stylesheet prefetch', href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css')
+    link(rel='stylesheet', href='css/style.css')
+  body
+    nav.navbar.navbar-expand-md.navbar-dark.bg-dark.fixed-top
+      a.navbar-brand(href='#') PixArt
+      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarsCustom', aria-controls='navbarsCustom', aria-expanded='false', aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #navbarsCustom.collapse.navbar-collapse
+        ul.navbar-nav.mr-auto
+          li.nav-item
+            a.nav-link(href='index.html') Home
+          li.nav-item
+            a.nav-link(href='help.html') Help
+          li.nav-item.dropdown
+            a#navBarTools.nav-link.dropdown-toggle(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') Brush
+            .dropdown-menu(aria-labelledby='navBarTools')
+              a#Brush.dropdown-item.tool(href='#') Brush
+              a#Eraser.dropdown-item.tool(href='#') Eraser
+          li.nav-item.dropdown
+            a#navBarDrawMethods.nav-link.dropdown-toggle(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') Draw On Click
+            .dropdown-menu(aria-labelledby='navBarDrawMethods')
+              a#DrawOnClick.dropdown-item.draw_method(href='#') Draw On Click
+              a#DrawOnDrag.dropdown-item.draw_method(href='#') Draw On Drag
+          li.nav-item.dropdown
+            a#navbarOther.nav-link.dropdown-toggle(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false') Other
+            .dropdown-menu(aria-labelledby='navbarOther')
+              a#clear_command.dropdown-item(href='#') Clear
+              a#toggle_border_command.dropdown-item(href='#') Toggle Border
+        form.form-inline.my-2.my-lg-0
+          .input-group
+            span.input-group-addon Color
+            input#color_input.form-control(type='color')
+          .input-group
+            span.input-group-addon Rows
+            input#rows_input.form-control(type='text', placeholder='30')
+          .input-group
+            span.input-group-addon Cols
+            input#cols_input.form-control(type='text', placeholder='30')
+          a#size_button.nav-link Change Size
+    div
+      table#grid
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js')
+    script(src='js/index.js')

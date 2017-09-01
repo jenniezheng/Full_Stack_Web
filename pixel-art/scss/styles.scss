@@ -1,0 +1,49 @@
+$soft_color: #EAEAEA;
+$heavy_color: #73628A;
+
+body {
+  margin:5%;
+  background-color: $soft_color;
+}
+
+nav {
+  &.bg-dark{
+    background-color: $heavy_color
+  !important;
+  }
+  & #color_input{
+    width: 50px;
+    height:40px;
+    margin: auto;
+    margin-right:10%;
+    padding: 0;
+  }
+
+  & #rows_input,  #cols_input {
+    max-width:60px;
+    margin-right:5%;
+  }
+  & #clear_command{
+
+  }
+  & #size_button{
+  color: white;
+  padding: 0;
+  }
+}
+
+#grid{
+  & td,.gridblock {
+      padding: 0;
+      margin: 0;
+  }
+  & .gridblock{
+  background-color:white;
+  border: 1px solid black;
+  height: 20px;
+  width: 20px;
+  }
+  margin: 0 auto;
+  margin-top: 10%;
+  border: 5px solid black;
+}
