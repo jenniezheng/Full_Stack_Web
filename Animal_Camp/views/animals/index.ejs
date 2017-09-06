@@ -1,0 +1,29 @@
+<% include ../partials/header %>
+
+<div class="container">
+
+	<header class="jumbotron">
+		<h1>Welcome to AnyWorld!</h1>
+		<h4>Converse about the most beautiful, ferocious, and exotic animals.</h4>
+		<br>
+		<p><a class="inline btn btn-info btn-lg" href="/animals/new">Blog animal</a></p>
+	</header>
+
+<div class="row text-center" style="display:flex; flex-wrap:wrap;">
+	<% animals.forEach(function(animal){ %>
+		 <div class="col-sm-6 col-md-3"> 
+		 	<a href="/animals/<%= animal._id %>" >
+		 	<div class="thumbnail">
+				 <img style="height:auto; width:auto" src="<%= animal.image %>">
+		 		<div class="captain"> 
+					<h4><%= animal.name %> </h4>
+				</div>
+			</div>
+			</a>
+		</div>
+	<% }); %>
+</div>
+
+</class="container">
+
+<% include ../partials/footer %>

@@ -1,0 +1,54 @@
+<% include ../partials/header %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<div class="thumbnail">
+				<img class="image-responsive" src="<%= animal.image %>">
+				<div class="captain caption-full">
+					<h2><%=animal.name%></h2>
+					<h5><%= animal.description %></h5>
+					<h5><em>Submitted by <%= animal.author.username %></em></h5>
+					<% if (user && (user.username =="Admin" || ( animal.author.id == user.id))) {%>
+					<a class="btn pink" href="/animals/<%= animal._id %>/edit">Edit</a>
+					<form class="inline" action="/animals/<%= animal._id %>?_method=DELETE" method="POST">
+						<button class="btn purple" >Delete</button>
+					</form>
+					<% }%>
+				</div>
+			</div>
+			<br>
+
+			<div class="well">
+				<div class="text-right">
+					<a class="btn blue btn-sm" href="/animals/<%= animal._id %>/comments/new">Add New Comment</a>
+				</div>
+				<% if ( animal.comments.length == 0 ) {%>
+					<p>No comments yet!</p>
+				<%}%>
+				
+				<% animal.comments.forEach(function(comment){ %>
+				<div class="row">
+					<div class="col-md-12">
+						<strong><%= comment.author.username %></strong>
+						<% if (comment.created) %>
+							<span class="pull-right"> <%=comment.created.toDateString() %></span>
+						<p><%= comment.text %></p>
+						<% if (user && (user.username =="Admin" || (comment.author.id == user.id))) {%>
+						<a class="btn btn-xs pink pull-right" href="/animals/<%= animal._id %>/comments/<%=comment._id%>/edit">Edit</a>
+						<form class="inline pull-right" action="/animals/<%= animal._id %>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+							<button class="btn btn-xs purple" >Delete</button>
+						</form>
+						<% }%>
+						<br>
+					</div>
+				</div>
+				<% }) %>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<% include ../partials/footer %>
+

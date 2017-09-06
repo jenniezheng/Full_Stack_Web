@@ -1,0 +1,30 @@
+<% include partials/header %>
+<div class="ui main text container segment">
+
+	<div class="ui huge header"><%= rant.title %> </div>
+	<div class="ui top attached segment">
+	<div class="item">
+		<img class="ui centered rounded image" style="width:600px; height:400px;" src="<%= rant.image %>">
+	</div>
+		<div class="content" style="margin-top: 30px;" >
+		<h4> <%= rant.created.toDateString() %><h4>
+		
+	</div>	
+		<p><%- rant.body %></p>
+	
+
+  <a style="display: inline;" href="/rants"><button class="ui button blue">Back</button></a>
+  <a style="display: inline;" href="/rants/<%= rant._id %>/edit" ><button class="ui button green">Edit Rant</button> </a>
+
+<form style="display: inline;" action="/rants/<%=rant._id %>?_method=DELETE" method="POST">
+	<button class="ui button red">Delete</button>
+</form>
+
+
+	
+
+
+</div>
+</div>
+
+<% include partials/footer %>
