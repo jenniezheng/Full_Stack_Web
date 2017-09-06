@@ -1,9 +1,11 @@
 # Reach the River
 ### Game Summary
- - You want to reach the river to drink water.
+ - Everyday, you want to reach the river to drink water.
  - But the path to the river is filled with bugs!
  - You're so scared of bugs that whenever you get near a bug you instinctively run back to your starting position.
- - Find a way to reach the river.
+ - Find a way to reach the river everyday.
+ - Then do it the next day and the next.
+ - Warning: the bugs keep breeding!
 ### Running Game In Graphics User Interface
  - Go to project's root directory
  - Click the **index.html** file
@@ -14,6 +16,6 @@
 ### Technical Info
  - Runs on ES5 (javascript), CSS, and HTML.
  - Built with ES6 compiled by Babel into ES5
- - I tried to build this with Heroku but got 'method not allowed'. Hm...
+ - I tried and failed to host this on Heroku and Github Pages. There's some issue that prevents the images from loading when it's hosted.
 ### Credit
  - Project description and skeleton (engine.js, resources.js, and images) are from Udacity
