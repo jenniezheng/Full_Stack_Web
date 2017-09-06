@@ -14,5 +14,6 @@
 ### Technical Info
  - Runs on ES5 (javascript), CSS, and HTML.
  - Built with ES6 compiled by Babel into ES5
+ - I tried to build this with Heroku but got 'method not allowed'. Hm...
 ### Credit
  - Project description and skeleton (engine.js, resources.js, and images) are from Udacity
