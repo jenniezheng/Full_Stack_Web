@@ -4,7 +4,7 @@
  - But the path to the river is filled with bugs!
  - You're so scared of bugs that whenever you get near a bug you instinctively run back to your starting position.
  - Find a way to reach the river.
- - Game is here: https://aqueous-wave-90757.herokuapp.com/index.html
+ - Game is here: https://cross-buggy-river.herokuapp.com/index.html
 ### Technical Info
  - Runs on ES5 (javascript), CSS, and HTML.
  - Built with ES6 compiled by Babel into ES5
