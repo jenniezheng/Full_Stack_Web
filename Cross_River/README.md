@@ -13,6 +13,8 @@
  - Go to project's root directory
  - To just run: `make view` or `google-chrome index.html`
  - To compile babel file and then run: `make all`
+ - Find a way to reach the river.
+ - Game is here: https://cross-buggy-river.herokuapp.com/index.html
 ### Technical Info
  - Runs on ES5 (javascript), CSS, and HTML.
  - Built with ES6 compiled by Babel into ES5
